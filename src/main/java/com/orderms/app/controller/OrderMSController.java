@@ -29,13 +29,13 @@ public class OrderMSController {
 	@Autowired
 	OrderMSService service;
 	
-	@RequestMapping(value="/add", method = RequestMethod.POST)
+	@RequestMapping(value="/submit", method = RequestMethod.POST)
 	 public ResponseEntity<SubmitOrderResponse> addProduct(@RequestBody SubmitOrderRequest request){
 		
 		 //Validate the request
 		 validator.validateSubmitOrder(request);
 		 
-		 SubmitOrderResponse response = service.submitorder();
+		 SubmitOrderResponse response = service.submitorder(request);
 		 
 		 response.setStatus("SUCCESS");
 		 return new ResponseEntity<>(response, HttpStatus.OK);
@@ -55,7 +55,7 @@ public class OrderMSController {
 		 
 	 }
 	
-	@RequestMapping(value="/cancel/{orderNumber}", method = RequestMethod.GET)
+	@RequestMapping(value="/cancel/{orderNumber}", method = RequestMethod.DELETE)
 	 public ResponseEntity<CommonResponse> orderCancel(@PathVariable("orderNumber") String orderNumber){
 		
 		 //Validate the request

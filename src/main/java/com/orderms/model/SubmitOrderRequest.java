@@ -1,13 +1,13 @@
 package com.orderms.model;
 
 public class SubmitOrderRequest {
-	String productId;
+	int productId;
 	String date;
 	Address address;
-	public String getProductId() {
+	public int getProductId() {
 		return productId;
 	}
-	public void setProductId(String productId) {
+	public void setProductId(int productId) {
 		this.productId = productId;
 	}
 	public String getDate() {
